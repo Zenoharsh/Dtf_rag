@@ -4,9 +4,9 @@
 
 This repository contains the full-stack implementation of an AI-powered chatbot for the [Dattopant Thengadi Foundation website](https://dtforg.in). The chatbot uses a Retrieval-Augmented Generation (RAG) pipeline to answer user questions based on a private collection of documents, including PDFs and scraped website content.
 
-**Live Demo:** [chat.dtforg.in](https://chat.dtforg.in)
+**Live Demo:** [dtforg.in](https://dtforg.in)
 
----
+Please click on the Chatbot icon in the right-bottom corner to ask relevant queries.
 
 ## Features
 
