@@ -1,0 +1,11 @@
+# Python virtual environment
+venv/
+__pycache__/
+
+# LlamaIndex storage (large and auto-generated)
+storage/
+
+# IDE and OS files
+.idea/
+.vscode/
+*.DS_Store
