@@ -1,6 +1,6 @@
 # DTF-AI: A RAG-Powered Chatbot for the Dattopant Thengadi Foundation
 
-![Chatbot Demo](URL_TO_A_GIF_OR_SCREENSHOT_OF_YOUR_CHATBOT_IN_ACTION)
+![Chatbot Demo](https://dtforg.in)
 
 This repository contains the full-stack implementation of an AI-powered chatbot for the [Dattopant Thengadi Foundation website](https://dtforg.in). The chatbot uses a Retrieval-Augmented Generation (RAG) pipeline to answer user questions based on a private collection of documents, including PDFs and scraped website content.
 
@@ -36,7 +36,7 @@ To run this project locally, follow these steps:
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/dtf-ai.git](https://github.com/your-username/dtf-ai.git)
+    git clone [https://github.com/Zenoharsh/Dtf_rag.git](https://github.com/Zenoharsh/Dtf_rag.git)
     cd dtf-ai
     ```
 
