@@ -67,7 +67,7 @@ To run this project locally, follow these steps:
 ---
 
 ## Project Structure
-
+```bash
 /dtf-ai
 ├── data/ # Source documents (PDFs, TXT files)
 ├── public/ # (Optional) For frontend assets like widget.js
@@ -76,7 +76,7 @@ To run this project locally, follow these steps:
 ├── keep_alive.sh # Cron script to prevent model cold starts
 ├── requirements.txt # Python dependencies
 └── README.md # This file
-
+```
 ---
 
 ## Future Improvements
