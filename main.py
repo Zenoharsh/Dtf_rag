@@ -10,16 +10,15 @@ from pathlib import Path
 import uvicorn
 import asyncio
 
-# Set HuggingFace embedding model
 # This is set globally for the LlamaIndex application
 Settings.embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
-# === CONFIG ===
+# CONFIG 
 PDF_DIR = "./data"
 STORAGE_DIR = "./storage"
 OLLAMA_MODEL = "gemma2:2b"
 
-# === FASTAPI SETUP ===
+# FASTAPI SETUP
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -29,12 +28,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# === LLM SETUP ===
+# LLM SETUP 
 print("Loading LLM...")
 # Increased timeout for potentially slower models on the VPS
 llm = Ollama(model=OLLAMA_MODEL, request_timeout=120)
 
-# === INDEX SETUP ===
+# INDEX SETUP
 # This block checks if a vector store already exists.
 # If not, it creates one from the PDFs in the data directory.
 try:
@@ -58,7 +57,7 @@ except Exception as e:
     print(f"❌ Error during index setup: {e}")
     index = None
 
-# === PROMPT TEMPLATE & QUERY ENGINE SETUP ===
+#  PROMPT TEMPLATE & QUERY ENGINE SETUP 
 # This template instructs the model on how to behave and use the context.
 qa_prompt_tmpl_str = (
     "You are a professional AI assistant for the Dattopant Thengadi Foundation. "
@@ -77,18 +76,18 @@ if index:
     query_engine = index.as_query_engine(
         llm=llm,
         streaming=True,
-        text_qa_template=qa_prompt_tmpl, # Using the new prompt template
+        text_qa_template=qa_prompt_tmpl,
         similarity_top_k=3  # Retrieving only the top 3 most relevant text chunks
     )
 else:
     query_engine = None
 
-# === SANITY CHECK ENDPOINT ===
+# SANITY CHECK ENDPOINT 
 @app.get("/")
 async def root():
     return {"message": "Backend is running. Auth: Zenoharsh"}
 
-# === API ENDPOINT FOR CHAT ===
+# API ENDPOINT FOR CHAT
 # Using a semaphore to limit concurrent requests to prevent server overload
 semaphore = asyncio.Semaphore(2)
 @app.post("/chat")
@@ -125,8 +124,7 @@ async def chat(request: Request):
 
         return StreamingResponse(event_stream(), media_type="text/event-stream")
 
-# === LOCAL TEST RUNNER ===
-# This allows you to run the script directly with `python main.py` for testing.
+# LOCAL TEST RUNNER 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
 
